@@ -1,9 +1,9 @@
-FROM eclipse-temurin:8-jre-alpine
+FROM eclipse-temurin:17-jre-alpine
 
 WORKDIR /usr/app
 
-COPY build/libs/*.jar app.jar
+COPY build/libs/java-app-1.0-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar"]
