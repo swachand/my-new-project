@@ -26,13 +26,13 @@ jobs:
       - name: Verify JAR
         run: ls -R build/libs
      
-      - name: Debug JAR
+      - name: Debug — show directory
         run: |
-          echo "===== ROOT FOLDER ====="
+          echo "Current directory:"
+          pwd
+          echo "Files:"
           ls -R .
-          echo "===== BUILD/LIBS ====="
-          ls -R build/libs || true
-       
+
       - uses: actions/checkout@v1
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
