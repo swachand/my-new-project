@@ -38,8 +38,9 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       
       - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/my-new-actions:latest .
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/my-new-actions:latest .
 
       - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/my-new-actions:latest
-
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/my-new-actions:latest
