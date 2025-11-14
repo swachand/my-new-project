@@ -25,6 +25,13 @@ jobs:
 
       - name: Verify JAR
         run: ls -R build/libs
+     
+      - name: Debug JAR
+        run: |
+          echo "===== ROOT FOLDER ====="
+          ls -R .
+          echo "===== BUILD/LIBS ====="
+          ls -R build/libs || true
        
       - uses: actions/checkout@v1
       - name: Login to DockerHub Registry
