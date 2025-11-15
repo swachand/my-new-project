@@ -36,7 +36,13 @@ jobs:
       - name: Build Docker Image
         run: docker build -t my-new-actions:latest .
       
-      - uses: actions/checkout@v1
+    #  - uses: actions/checkout@v1
       - name: Login to DockerHub Registry
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin 
+
+      - name: Push Image
+        run: |
+          docker tag my-new-actions:latest ${{ secrets.DOCKER_USERNAME }}/my-new-actions:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/my-new-actions:latest
+
         
